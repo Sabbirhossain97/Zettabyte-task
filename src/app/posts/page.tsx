@@ -1,32 +1,12 @@
 'use client'
 import { motion } from 'framer-motion';
-import { FileText, ExternalLink } from 'lucide-react';
+import { FileText, ExternalLink, UserRound } from 'lucide-react';
 import { useFetch } from '../hooks/useFetch';
 import { LoadingGrid } from '../components/LoadingSpinner';
 import { ErrorMessage } from '../components/ErrorMessage';
+import { Post } from '../interfaces/interface';
+import { containerVariants, itemVariants } from '../constants/animationSettings';
 import Link from 'next/link';
-
-interface Post {
-    id: number;
-    title: string;
-    body: string;
-    userId: number;
-}
-
-const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-        opacity: 1,
-        transition: {
-            staggerChildren: 0.1,
-        },
-    },
-};
-
-const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0 },
-};
 
 export function Posts() {
     const { data: posts, loading, error, refetch, fetchWithError } = useFetch<Post[]>(
@@ -55,21 +35,12 @@ export function Posts() {
                     animate={{ opacity: 1, x: 0 }}
                 >
                     <h1 className="text-3xl font-bold text-foreground flex items-center gap-3">
-                        <FileText className="h-8 w-8 text-primary" />
+                        <FileText className="h-8 w-8 text-blue-500" />
                         All Posts
                     </h1>
                     <p className="text-muted-foreground mt-2">
                         Browse through all available posts and explore their content
                     </p>
-                </motion.div>
-
-                <motion.div
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                >
-                    <button onClick={fetchWithError} >
-                        Test Error
-                    </button>
                 </motion.div>
             </div>
 
@@ -95,12 +66,15 @@ export function Posts() {
                             <div className='flex flex-col flex-1 justify-between'>
                                 <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">{post.body}</p>
                                 <div className="flex items-center justify-between">
-                                    <span className="text-sm text-muted-foreground">
-                                        User {post.userId}
-                                    </span>
+                                    <div className='flex items-center gap-2'>
+                                        <UserRound className='border rounded-full border-gray-500' />
+                                        <span className="text-sm text-muted-foreground">
+                                            User {post.userId}
+                                        </span>
+                                    </div>
 
                                     <Link href={`/posts/${post.id}`}>
-                                        <button className='flex items-center'>
+                                        <button className='flex items-center text-sm px-3 py-2 rounded-md bg-slate-700 hover:bg-slate-700/50 transition duration-300 cursor-pointer'>
                                             <span>Read More</span>
                                             <ExternalLink className="w-3 h-3 ml-1" />
                                         </button>

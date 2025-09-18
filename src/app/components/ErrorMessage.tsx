@@ -12,7 +12,7 @@ export function ErrorMessage({ message, onRetry, onTestError }: ErrorMessageProp
         <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="flex flex-col items-center justify-center p-8 text-center"
+            className="flex flex-col items-center justify-center p-8 text-center w-full"
         >
             <motion.div
                 animate={{
@@ -33,9 +33,9 @@ export function ErrorMessage({ message, onRetry, onTestError }: ErrorMessageProp
 
             <div className="flex gap-3">
                 {onRetry && (
-                    <button onClick={onRetry} >
+                    <button onClick={onRetry} className='flex items-center'>
                         <RefreshCw className="w-4 h-4 mr-2" />
-                        Try Again
+                        <span>Try Again</span>
                     </button>
                 )}
 
