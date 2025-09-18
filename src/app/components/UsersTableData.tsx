@@ -13,7 +13,7 @@ function UsersTableData({ users, setSelectedUser }: TableDataProps) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
         >
-            <div className="overflow-hidden rounded-lg border border-zinc-700 bg-gray-800/50 text-card-foreground shadow-sm">
+            <div className="overflow-hidden rounded-lg border border-gray-700 bg-gray-800/50 text-card-foreground shadow-sm">
                 <div className='flex flex-col space-y-1.5 p-6'>
                     <div className='text-2xl font-semibold leading-none tracking-tight'>All Users ({users?.length || 0})</div>
                 </div>
@@ -22,7 +22,7 @@ function UsersTableData({ users, setSelectedUser }: TableDataProps) {
                     <div className="overflow-x-auto">
                         <table className="w-full">
                             <thead>
-                                <tr className="border-b border-zinc-700">
+                                <tr className="border-b border-gray-700">
                                     <th className="text-left p-4 text-sm font-medium text-muted-foreground">Name</th>
                                     <th className="text-left p-4 text-sm font-medium text-muted-foreground">Email</th>
                                     <th className="text-left p-4 text-sm font-medium text-muted-foreground">Company</th>
@@ -37,7 +37,7 @@ function UsersTableData({ users, setSelectedUser }: TableDataProps) {
                                         animate={{ opacity: 1, x: 0 }}
                                         transition={{ delay: index * 0.05 }}
                                         onClick={() => setSelectedUser(user)}
-                                        className="border-b border-zinc-700 hover:bg-slate-800 cursor-pointer transition-colors duration-200"
+                                        className="border-b border-gray-700 hover:bg-slate-800 cursor-pointer transition-colors duration-200"
                                     >
                                         <td className="p-4">
                                             <div>

@@ -1,12 +1,13 @@
 'use client'
 import { motion } from 'framer-motion';
-import { FileText, ExternalLink, UserRound } from 'lucide-react';
+import { ExternalLink, FileText } from 'lucide-react';
 import { useFetch } from '../hooks/useFetch';
 import { LoadingGrid } from '../components/LoadingSpinner';
 import { ErrorMessage } from '../components/ErrorMessage';
 import { Post } from '../interfaces/interface';
 import { containerVariants, itemVariants } from '../constants/animationSettings';
 import Link from 'next/link';
+import Card from '../components/Card';
 
 export function Posts() {
     const { data: posts, loading, error, refetch, fetchWithError } = useFetch<Post[]>(
@@ -57,31 +58,15 @@ export function Posts() {
                         whileHover={{ y: -5 }}
                         transition={{ duration: 0.3 }}
                     >
-                        <div className="h-full flex flex-col max-w-sm p-6 border rounded-lg shadow-sm bg-gray-800/50 border-gray-700">
-                            <div>
-                                <h1>
-                                    <p className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{post.title}</p>
-                                </h1>
-                            </div>
-                            <div className='flex flex-col flex-1 justify-between'>
-                                <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">{post.body}</p>
-                                <div className="flex items-center justify-between">
-                                    <div className='flex items-center gap-2'>
-                                        <UserRound className='border rounded-full border-gray-500' />
-                                        <span className="text-sm text-muted-foreground">
-                                            User {post.userId}
-                                        </span>
-                                    </div>
-
-                                    <Link href={`/posts/${post.id}`}>
-                                        <button className='flex items-center text-sm px-3 py-2 rounded-md bg-slate-700 hover:bg-slate-700/50 transition duration-300 cursor-pointer'>
-                                            <span>Read More</span>
-                                            <ExternalLink className="w-3 h-3 ml-1" />
-                                        </button>
-                                    </Link>
-                                </div>
-                            </div>
-                        </div>
+                        <Card
+                            {...post}
+                            footer={<Link href={`/posts/${post.id}`}>
+                                <button className='flex items-center text-sm px-3 py-2 rounded-md bg-slate-700 hover:bg-slate-700/50 transition duration-300 cursor-pointer'>
+                                    <span>Read More</span>
+                                    <ExternalLink className="w-3 h-3 ml-1" />
+                                </button>
+                            </Link>}
+                        />
                     </motion.div>
                 ))}
             </motion.div>

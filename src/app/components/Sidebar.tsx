@@ -10,6 +10,7 @@ import {
     X,
     BarChart3,
 } from 'lucide-react';
+import { usePathname } from 'next/navigation';
 
 const menuItems = [
     { icon: Home, label: 'Home', path: '/' },
@@ -19,6 +20,7 @@ const menuItems = [
 
 export function Sidebar() {
     const [sidebarOpen, setSidebarOpen] = useState(true);
+    const currentPathname = usePathname();
 
     return (
         <div className="flex min-h-screen bg-background">
@@ -26,9 +28,9 @@ export function Sidebar() {
                 <motion.aside
                     animate={{ width: sidebarOpen ? 280 : 80 }}
                     transition={{ duration: 0.3, ease: "easeInOut" }}
-                    className="border-r border-zinc-700 relative z-10"
+                    className="border-r border-gray-700 relative z-10"
                 >
-                    <div className="flex items-center justify-between p-6 border-b border-zinc-700">
+                    <div className="flex items-center justify-between p-6 border-b border-gray-700">
 
                         {sidebarOpen && (
                             <motion.div
@@ -71,7 +73,7 @@ export function Sidebar() {
                                 >
                                     <Link
                                         href={item.path}
-                                        className='flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-300 hover:bg-slate-800 group'>
+                                        className={`${item.path === currentPathname ? "bg-slate-800" : ""} flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-300 hover:bg-slate-800 group`}>
                                         <item.icon
                                             className='w-5 h-5 transition-colors text-white text-muted-foreground group-hover:text-foreground' />
                                         <AnimatePresence mode="wait">

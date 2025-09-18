@@ -1,3 +1,6 @@
+import { ReactNode } from "react";
+import { LucideIcon } from 'lucide-react';
+
 export interface Post {
     id: number;
     title: string;
@@ -23,4 +26,20 @@ export interface User {
         city: string;
         zipcode: string;
     };
+}
+
+export interface CardProps {
+    title: string;
+    body: string;
+    id: number;
+    userId: number;
+    footer?: ReactNode;
+}
+
+export interface StatsCardProps {
+    title: string,
+    value: string,
+    change: string,
+    icon: LucideIcon,
+    color: string,
 }
