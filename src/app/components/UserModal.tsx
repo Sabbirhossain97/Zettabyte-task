@@ -54,7 +54,7 @@ function UserModal({ selectedUser, setSelectedUser }: UserModalProps) {
 
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     <div className="flex items-center space-x-3">
-                                        <Mail className="w-5 h-5 text-primary" />
+                                        <Mail className="w-5 h-5" />
                                         <div>
                                             <p className="text-sm text-muted-foreground">Email</p>
                                             <p className="text-foreground">{selectedUser.email}</p>
@@ -62,7 +62,7 @@ function UserModal({ selectedUser, setSelectedUser }: UserModalProps) {
                                     </div>
 
                                     <div className="flex items-center space-x-3">
-                                        <Phone className="w-5 h-5 text-primary" />
+                                        <Phone className="w-5 h-5" />
                                         <div>
                                             <p className="text-sm text-muted-foreground">Phone</p>
                                             <p className="text-foreground">{selectedUser.phone}</p>
@@ -70,7 +70,7 @@ function UserModal({ selectedUser, setSelectedUser }: UserModalProps) {
                                     </div>
 
                                     <div className="flex items-center space-x-3">
-                                        <Globe className="w-5 h-5 text-primary" />
+                                        <Globe className="w-5 h-5" />
                                         <div>
                                             <p className="text-sm text-muted-foreground">Website</p>
                                             <p className="text-foreground">{selectedUser.website}</p>
@@ -78,7 +78,7 @@ function UserModal({ selectedUser, setSelectedUser }: UserModalProps) {
                                     </div>
 
                                     <div className="flex items-center space-x-3">
-                                        <MapPin className="w-5 h-5 text-primary" />
+                                        <MapPin className="w-5 h-5" />
                                         <div>
                                             <p className="text-sm text-muted-foreground">Address</p>
                                             <p className="text-foreground">
@@ -94,7 +94,7 @@ function UserModal({ selectedUser, setSelectedUser }: UserModalProps) {
 
                                 <div className="bg-gradient-glass rounded-lg p-0 space-y-2">
                                     <div className="flex items-center space-x-2">
-                                        <Building className="w-5 h-5 text-primary" />
+                                        <Building className="w-5 h-5" />
                                         <span className="font-medium text-foreground">{selectedUser.company.name}</span>
                                     </div>
                                     <p className="text-muted-foreground italic">{`"${selectedUser.company.catchPhrase}"`}</p>

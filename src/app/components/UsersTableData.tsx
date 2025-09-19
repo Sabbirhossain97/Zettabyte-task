@@ -13,7 +13,7 @@ function UsersTableData({ users, setSelectedUser }: TableDataProps) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
         >
-            <div className="overflow-hidden rounded-lg border border-gray-700 bg-gray-800/50 text-card-foreground shadow-sm">
+            <div className="overflow-hidden rounded-lg border border-gray-700 bg-gray-800/50 shadow-sm">
                 <div className='flex flex-col space-y-1.5 p-6'>
                     <div className='text-2xl font-semibold leading-none tracking-tight'>All Users ({users?.length || 0})</div>
                 </div>

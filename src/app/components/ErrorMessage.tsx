@@ -1,13 +1,14 @@
 import { motion } from 'framer-motion';
-import { AlertTriangle, RefreshCw } from 'lucide-react';
+import { AlertTriangle } from 'lucide-react';
+import Link from 'next/link';
 import { ErrorMessageProps } from '../interfaces/interface';
 
-export function ErrorMessage({ message, onRetry, onTestError }: ErrorMessageProps) {
+export function ErrorMessage({ pathname }: ErrorMessageProps) {
     return (
         <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="flex flex-col items-center justify-center p-8 text-center w-full"
+            className="flex h-full flex-col items-center justify-center p-8 text-center w-full"
         >
             <motion.div
                 animate={{
@@ -23,23 +24,14 @@ export function ErrorMessage({ message, onRetry, onTestError }: ErrorMessageProp
             <h3 className="text-xl font-semibold text-foreground mb-2">Oops! Something went wrong</h3>
 
             <p className="text-muted-foreground mb-6 max-w-md">
-                {message}
+                Failed to load {pathname === "/users" ? 'Users' : 'Posts'}
             </p>
-
-            <div className="flex gap-3">
-                {onRetry && (
-                    <button onClick={onRetry} className='flex items-center'>
-                        <RefreshCw className="w-4 h-4 mr-2" />
-                        <span>Try Again</span>
-                    </button>
-                )}
-
-                {onTestError && (
-                    <button onClick={onTestError} >
-                        Test Error Handling
-                    </button>
-                )}
-            </div>
+            <Link
+                href="/"
+                className="mt-2 px-6 py-2 bg-slate-700 text-white rounded-lg hover:bg-slate-800 transition"
+            >
+                Go Home
+            </Link>
         </motion.div>
     );
 }

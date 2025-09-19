@@ -2,9 +2,7 @@ import { ReactNode } from "react";
 import { LucideIcon } from 'lucide-react';
 
 export interface ErrorMessageProps {
-    message: string;
-    onRetry?: () => void;
-    onTestError?: () => void;
+    pathname: string;
 }
 
 export interface UseFetchState<T> {

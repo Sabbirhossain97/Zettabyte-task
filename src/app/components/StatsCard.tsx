@@ -6,7 +6,7 @@ function StatsCard({ title, value, change, icon: Icon, color }: StatsCardProps) 
     return (
         <div className="relative overflow-hidden border border-gray-700 bg-slate-800/50 p-4 rounded-md">
             <motion.div
-                className="absolute inset-0 bg-gradient-primary opacity-0 hover:opacity-10 transition-opacity duration-300"
+                className="absolute inset-0 opacity-0 hover:opacity-10 transition-opacity duration-300"
                 whileHover={{ opacity: 0.1 }}
             />
             <div className="flex flex-row items-center justify-between space-y-0 pb-8">

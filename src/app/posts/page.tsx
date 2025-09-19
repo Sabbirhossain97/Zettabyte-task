@@ -8,8 +8,11 @@ import { Post } from '../interfaces/interface';
 import { containerVariants, itemVariants } from '../constants/animationSettings';
 import Link from 'next/link';
 import Card from '../components/Card';
+import { usePathname } from 'next/navigation';
 
 export function Posts() {
+    const currentPathname = usePathname();
+
     const { data: posts, loading, error, refetch, fetchWithError } = useFetch<Post[]>(
         'https://jsonplaceholder.typicode.com/posts'
     );
@@ -20,11 +23,7 @@ export function Posts() {
 
     if (error) {
         return (
-            <ErrorMessage
-                message={error}
-                onRetry={refetch}
-                onTestError={fetchWithError}
-            />
+            <ErrorMessage pathname={currentPathname} />
         );
     }
 
@@ -39,6 +38,14 @@ export function Posts() {
                         <FileText className="h-8 w-8 text-blue-500" />
                         All Posts
                     </h1>
+                </motion.div>
+                <motion.div
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                >
+                    <button onClick={fetchWithError} className="cursor-pointer px-3 whitespace-nowrap w-full flex justify-center transition duration-300 text-center items-center gap-2 rounded-md bg-slate-700 hover:bg-slate-600 py-2 text-smlg font-semibold">
+                        Test Error
+                    </button>
                 </motion.div>
             </div>
 

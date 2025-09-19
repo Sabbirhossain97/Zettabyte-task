@@ -49,7 +49,7 @@ function Auth({ openDropDown, setOpenDropDown }: AuthProps) {
                     {session && <li>
                         <button onClick={handleSignOut} className="cursor-pointer px-2 whitespace-nowrap w-full flex justify-center transition duration-300 text-center items-center gap-2 rounded-md bg-slate-700 hover:bg-slate-600 py-2 text-smlg font-semibold" >
                             {isSigningOut ? <div className='flex items-center gap-2'><motion.div
-                                className="w-5 h-5 border-2 border-primary border-t-transparent rounded-full"
+                                className="w-5 h-5 border-2 rounded-full"
                                 animate={{ rotate: 360 }}
                                 transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
                             /> Signing out...</div> : 'Sign out'}

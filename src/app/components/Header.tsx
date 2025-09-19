@@ -18,7 +18,7 @@ function Header() {
 
     return (
         <>
-            <header className="bg-card/50 backdrop-blur-xl border-b border-gray-700 px-4 sm:px-6 lg:px-10 py-5 hidden lg:block">
+            <header className="backdrop-blur-xl border-b border-gray-700 px-4 sm:px-6 lg:px-10 py-5 hidden lg:block">
                 {openDropDown && <div onClick={() => setOpenDropDown(!openDropDown)} className="fixed inset-0 z-50 flex items-center justify-center p-4"></div>}
                 <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-4">
