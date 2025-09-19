@@ -6,7 +6,7 @@ import { ErrorMessageProps } from '../interfaces/interface';
 export function ErrorMessage({ pathname }: ErrorMessageProps) {
 
     function message() {
-        let pathArray = pathname.split("/")
+        const pathArray = pathname.split("/")
         if (pathArray.includes('users')) {
             return `Users`
         } else if (pathArray.length === 3 && typeof Number(pathArray[2]) === 'number') {

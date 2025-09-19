@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { useSession, signIn, signOut } from 'next-auth/react';
 import { LogIn } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 interface AuthProps {
     openDropDown: boolean;
@@ -29,7 +30,16 @@ function Auth({ openDropDown, setOpenDropDown }: AuthProps) {
                 <LogIn className='h-4 w-4' />
                 <span>Sign in</span>
             </motion.button>}
-            {session && <img onClick={() => setOpenDropDown(!openDropDown)} className='h-10 w-10 rounded-full cursor-pointer' src={session?.user?.image ?? undefined} />}
+            {session &&
+                <Image
+                    src={session?.user?.image ?? 'avatar'}
+                    onClick={() => setOpenDropDown(!openDropDown)}
+                    className='h-10 w-10 rounded-full cursor-pointer'
+                    width={40}
+                    height={40}
+                    alt='avatar'
+                />
+            }
             {openDropDown && <div className="z-10 bg-slate-800 right-0 mt-2 px-2 absolute  rounded-lg shadow-sm min-w-52">
                 <motion.ul
                     initial={{ opacity: 0, y: -10 }}
