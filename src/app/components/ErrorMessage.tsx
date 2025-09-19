@@ -4,6 +4,18 @@ import Link from 'next/link';
 import { ErrorMessageProps } from '../interfaces/interface';
 
 export function ErrorMessage({ pathname }: ErrorMessageProps) {
+
+    function message() {
+        let pathArray = pathname.split("/")
+        if (pathArray.includes('users')) {
+            return `Users`
+        } else if (pathArray.length === 3 && typeof Number(pathArray[2]) === 'number') {
+            return 'Post Details'
+        } else {
+            return "Posts"
+        }
+    }
+
     return (
         <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
@@ -24,7 +36,7 @@ export function ErrorMessage({ pathname }: ErrorMessageProps) {
             <h3 className="text-xl font-semibold text-foreground mb-2">Oops! Something went wrong</h3>
 
             <p className="text-muted-foreground mb-6 max-w-md">
-                Failed to load {pathname === "/users" ? 'Users' : 'Posts'}
+                Failed to load {message()}
             </p>
             <Link
                 href="/"

@@ -8,6 +8,7 @@ import { ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
 import { Post } from '@/app/interfaces/interface';
 import Card from '@/app/components/Card';
+import { usePathname } from 'next/navigation';
 
 interface PostDetailsPageProps {
     params: Promise<{ id: string }>
@@ -15,9 +16,10 @@ interface PostDetailsPageProps {
 
 export function PostDetail({ params }: PostDetailsPageProps) {
 
+    const currentPathname = usePathname();
     const { id } = React.use(params)
 
-    const { data: post, loading: postLoading, error: postError, refetch: refetchPost } = useFetch<Post>(
+    const { data: post, loading: postLoading, error: postError, fetchWithError } = useFetch<Post>(
         `https://jsonplaceholder.typicode.com/posts/${id}`
     );
 
@@ -27,10 +29,7 @@ export function PostDetail({ params }: PostDetailsPageProps) {
 
     if (postError) {
         return (
-            <ErrorMessage
-                message={postError}
-                onRetry={refetchPost}
-            />
+            <ErrorMessage pathname={currentPathname} />
         );
     }
 
@@ -43,6 +42,7 @@ export function PostDetail({ params }: PostDetailsPageProps) {
             <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
+                className="flex items-center justify-between"
             >
                 <Link href="/posts">
                     <button className="mb-4 flex items-center transition duration-300 hover:text-blue-500 cursor-pointer">
@@ -50,6 +50,14 @@ export function PostDetail({ params }: PostDetailsPageProps) {
                         <span>Back to Posts</span>
                     </button>
                 </Link>
+                <motion.div
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                >
+                    <button onClick={fetchWithError} className="cursor-pointer px-3 whitespace-nowrap w-full flex justify-center transition duration-300 text-center items-center gap-2 rounded-md bg-slate-700 hover:bg-slate-600 py-2 text-smlg font-semibold">
+                        Test Error
+                    </button>
+                </motion.div>
             </motion.div>
 
             {post && (
