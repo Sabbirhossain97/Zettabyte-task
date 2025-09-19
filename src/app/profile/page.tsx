@@ -1,6 +1,7 @@
 'use client'
 import { useSession } from 'next-auth/react'
 import Link from "next/link";
+import Image from 'next/image';
 
 function Profile() {
   const { data: session } = useSession();
@@ -9,7 +10,13 @@ function Profile() {
       <div className='p-6'>
         <div className='flex flex-col items-center sm:justify-start sm:flex-row gap-10 border rounded-md p-10 border-gray-700 mt-6'>
           <div>
-            <img className='h-44 w-44 rounded-full' src={session?.user?.image ?? undefined} />
+            <Image
+              className="h-44 w-44 rounded-full"
+              src={session?.user?.image ?? "avatar"} 
+              alt="avatar"
+              width={176} 
+              height={176}
+            />
           </div>
           <div className='flex flex-col gap-4 justify-center items-start'>
             <h1 className='text-4xl font-bold'>{session?.user?.name}</h1>

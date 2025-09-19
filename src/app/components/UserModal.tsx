@@ -97,7 +97,7 @@ function UserModal({ selectedUser, setSelectedUser }: UserModalProps) {
                                         <Building className="w-5 h-5 text-primary" />
                                         <span className="font-medium text-foreground">{selectedUser.company.name}</span>
                                     </div>
-                                    <p className="text-muted-foreground italic">"{selectedUser.company.catchPhrase}"</p>
+                                    <p className="text-muted-foreground italic">{`"${selectedUser.company.catchPhrase}"`}</p>
                                     <p className="text-sm text-muted-foreground">{selectedUser.company.bs}</p>
                                 </div>
                             </div>

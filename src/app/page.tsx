@@ -19,8 +19,8 @@ export default function Home() {
           Welcome to Your Dashboard
         </h1>
         <p className="text-lg text-gray-400 max-w-2xl mx-auto">
-          Monitor your application's performance and manage your content with ease.
-          Here's an overview of your current metrics.
+          {`Monitor your application's performance and manage your content with ease.
+            Here's an overview of your current metrics.`}
         </p>
       </motion.div>
 
@@ -53,7 +53,6 @@ export default function Home() {
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 0.6, duration: 0.5 }}
       >
-
       </motion.div >
     </div>
   );
