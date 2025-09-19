@@ -29,7 +29,7 @@ export function Posts() {
     }
 
     return (
-        <div className="space-y-6 flex-1 p-10">
+        <div className="space-y-6 flex-1 p-4 sm:p-6 lg:p-10">
             <div className="flex items-center justify-between">
                 <motion.div
                     initial={{ opacity: 0, x: -20 }}
@@ -39,9 +39,6 @@ export function Posts() {
                         <FileText className="h-8 w-8 text-blue-500" />
                         All Posts
                     </h1>
-                    <p className="text-muted-foreground mt-2">
-                        Browse through all available posts and explore their content
-                    </p>
                 </motion.div>
             </div>
 
@@ -49,7 +46,7 @@ export function Posts() {
                 variants={containerVariants}
                 initial="hidden"
                 animate="visible"
-                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-6"
             >
                 {posts?.map((post) => (
                     <motion.div

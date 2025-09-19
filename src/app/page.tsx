@@ -45,7 +45,7 @@ const categoryData = [
 
 export default function Home() {
   return (
-    <div className="space-y-8 p-10 w-full">
+    <div className="space-y-8 p-4 sm:p-6 lg:p-10 w-full flex-1">
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}

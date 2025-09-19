@@ -31,7 +31,7 @@ export function Users() {
 
     return (
         <>
-            <div className="space-y-6 flex-1 p-10">
+            <div className="space-y-6 flex-1 p-4 sm:p-6 lg:p-10">
                 <div className="flex items-center justify-between">
                     <motion.div
                         initial={{ opacity: 0, x: -20 }}

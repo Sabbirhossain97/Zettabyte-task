@@ -38,7 +38,7 @@ export function PostDetail({ params }: PostDetailsPageProps) {
         <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="w-full mx-auto space-y-8 py-10 px-10"
+            className="w-full mx-auto mt-6 space-y-8 p-4 sm:p-6 lg:p-10"
         >
             <motion.div
                 initial={{ opacity: 0, x: -20 }}
