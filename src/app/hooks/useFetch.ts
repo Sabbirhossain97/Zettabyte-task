@@ -1,14 +1,5 @@
 import { useState, useEffect } from 'react';
-
-interface UseFetchState<T> {
-    data: T | null;
-    loading: boolean;
-    error: string | null;
-}
-
-interface UseFetchOptions {
-    autoFetch?: boolean;
-}
+import { UseFetchState, UseFetchOptions } from '../interfaces/interface';
 
 export function useFetch<T>(url: string, options: UseFetchOptions = { autoFetch: true }) {
     const [state, setState] = useState<UseFetchState<T>>({

@@ -1,6 +1,23 @@
 import { ReactNode } from "react";
 import { LucideIcon } from 'lucide-react';
 
+export interface ErrorMessageProps {
+    message: string;
+    onRetry?: () => void;
+    onTestError?: () => void;
+}
+
+export interface UseFetchState<T> {
+    data: T | null;
+    loading: boolean;
+    error: string | null;
+}
+
+export interface UseFetchOptions {
+    autoFetch?: boolean;
+}
+
+
 export interface Post {
     id: number;
     title: string;

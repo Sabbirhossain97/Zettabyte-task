@@ -1,11 +1,6 @@
 import { motion } from 'framer-motion';
 import { AlertTriangle, RefreshCw } from 'lucide-react';
-
-interface ErrorMessageProps {
-    message: string;
-    onRetry?: () => void;
-    onTestError?: () => void;
-}
+import { ErrorMessageProps } from '../interfaces/interface';
 
 export function ErrorMessage({ message, onRetry, onTestError }: ErrorMessageProps) {
     return (

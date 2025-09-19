@@ -1,4 +1,4 @@
-import React, { SetStateAction } from 'react'
+import React, { useState, SetStateAction } from 'react'
 import { motion } from 'framer-motion';
 import { useSession, signIn, signOut } from 'next-auth/react';
 import { LogIn } from 'lucide-react';
@@ -11,7 +11,18 @@ interface AuthProps {
 
 function Auth({ openDropDown, setOpenDropDown }: AuthProps) {
     const { data: session } = useSession();
-    
+    const [isSigningOut, setIsSigningOut] = useState(false)
+
+    const handleSignOut = async () => {
+        setIsSigningOut(true)
+        try {
+            await signOut({ redirect: false })
+        } finally {
+            setIsSigningOut(false)
+            setOpenDropDown(!openDropDown)
+        }
+    }
+
     return (
         <div className='relative' onClick={(e) => e.stopPropagation()}>
             {!session && <motion.button onClick={() => setOpenDropDown(!openDropDown)} className="flex cursor-pointer transition duration-300 items-center gap-2 bg-gray-700 px-4 py-2 rounded-lg hover:bg-gray-800" type="button">
@@ -19,7 +30,6 @@ function Auth({ openDropDown, setOpenDropDown }: AuthProps) {
                 <span>Sign in</span>
             </motion.button>}
             {session && <img onClick={() => setOpenDropDown(!openDropDown)} className='h-10 w-10 rounded-full cursor-pointer' src={session?.user?.image ?? undefined} />}
-
             {openDropDown && <div className="z-10 bg-slate-800 right-0 mt-2 px-2 absolute  rounded-lg shadow-sm min-w-52">
                 <motion.ul
                     initial={{ opacity: 0, y: -10 }}
@@ -37,8 +47,12 @@ function Auth({ openDropDown, setOpenDropDown }: AuthProps) {
                         </Link>
                     </li>}
                     {session && <li>
-                        <button onClick={() => signOut()} className="cursor-pointer px-2 whitespace-nowrap w-full flex justify-center transition duration-300 text-center items-center gap-2 rounded-md bg-slate-700 hover:bg-slate-600 py-2 text-smlg font-semibold" >
-                            Sign out
+                        <button onClick={handleSignOut} className="cursor-pointer px-2 whitespace-nowrap w-full flex justify-center transition duration-300 text-center items-center gap-2 rounded-md bg-slate-700 hover:bg-slate-600 py-2 text-smlg font-semibold" >
+                            {isSigningOut ? <div className='flex items-center gap-2'><motion.div
+                                className="w-5 h-5 border-2 border-primary border-t-transparent rounded-full"
+                                animate={{ rotate: 360 }}
+                                transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                            /> Signing out...</div> : 'Sign out'}
                         </button>
                     </li>}
                 </motion.ul>

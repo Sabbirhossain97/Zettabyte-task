@@ -41,6 +41,7 @@ function UserModal({ selectedUser, setSelectedUser }: UserModalProps) {
                                 <p className="text-muted-foreground">@{selectedUser.username}</p>
                             </div>
                             <button
+                                className='cursor-pointer'
                                 onClick={() => setSelectedUser(null)}
                             >
                                 <X className="w-4 h-4" />

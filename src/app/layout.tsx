@@ -7,7 +7,6 @@ import Header from "./components/Header";
 
 const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-inter",
   weight: ["400", "500", "700"],
 });
 
@@ -24,7 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.variable}  antialiased bg-slate-100 text-slate-900`}
+        className={`${inter.className} antialiased bg-slate-100 text-slate-900`}
       >
         <Providers>
           <div className="flex min-h-screen flex-col lg:flex-row">
