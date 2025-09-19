@@ -32,7 +32,7 @@ function Auth({ openDropDown, setOpenDropDown }: AuthProps) {
             </motion.button>}
             {session &&
                 <Image
-                    src={session?.user?.image ?? 'avatar'}
+                src={session?.user?.image ?? 'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png?20150327203541'}
                     onClick={() => setOpenDropDown(!openDropDown)}
                     className='h-10 w-10 rounded-full cursor-pointer'
                     width={40}

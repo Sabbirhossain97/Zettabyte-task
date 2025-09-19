@@ -12,7 +12,7 @@ function Profile() {
           <div>
             <Image
               className="h-44 w-44 rounded-full"
-              src={session?.user?.image ?? "avatar"} 
+              src={session?.user?.image ?? "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png?20150327203541"} 
               alt="avatar"
               width={176} 
               height={176}
