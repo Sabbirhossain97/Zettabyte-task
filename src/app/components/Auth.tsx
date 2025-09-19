@@ -32,7 +32,7 @@ function Auth({ openDropDown, setOpenDropDown }: AuthProps) {
             </motion.button>}
             {session &&
                 <Image
-                src={session?.user?.image ?? 'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png?20150327203541'}
+                    src={session?.user?.image ?? 'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png?20150327203541'}
                     onClick={() => setOpenDropDown(!openDropDown)}
                     className='h-10 w-10 rounded-full cursor-pointer'
                     width={40}
@@ -40,6 +40,7 @@ function Auth({ openDropDown, setOpenDropDown }: AuthProps) {
                     alt='avatar'
                 />
             }
+
             {openDropDown && <div className="z-10 bg-slate-800 right-0 mt-2 px-2 absolute  rounded-lg shadow-sm min-w-52">
                 <motion.ul
                     initial={{ opacity: 0, y: -10 }}
@@ -58,8 +59,8 @@ function Auth({ openDropDown, setOpenDropDown }: AuthProps) {
                     </li>}
                     {session && <li>
                         <button onClick={handleSignOut} className="cursor-pointer px-2 whitespace-nowrap w-full flex justify-center transition duration-300 text-center items-center gap-2 rounded-md bg-slate-700 hover:bg-slate-600 py-2 text-smlg font-semibold" >
-                            {isSigningOut ? <div className='flex items-center gap-2'><motion.div
-                                className="w-5 h-5 border-2 rounded-full"
+                            {isSigningOut ? <div className='flex items-center gap-2'> <motion.div
+                                className="w-5 h-5 border-2 border-primary border-t-transparent rounded-full"
                                 animate={{ rotate: 360 }}
                                 transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
                             /> Signing out...</div> : 'Sign out'}
